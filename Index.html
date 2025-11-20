@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E.O Montserrath Gydalthy - Odontología UAdeC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+        }
+
+        /* ===== HEADER - Encabezado con gradiente vibrante y formas decorativas ===== */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Formas decorativas en el header */
+        .header::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -250px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.4em;
+            opacity: 0.95;
+            margin-bottom: 20px;
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== SECCIÓN DE LA DOCTORA con formas geométricas ===== */
+        .doctor-section {
+            background: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Formas decorativas de fondo */
+        .doctor-section::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            opacity: 0.05;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            top: -100px;
+            left: -100px;
+            z-index: 0;
+        }
+
+        .doctor-section::after {
+            content: '';
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            opacity: 0.05;
+            border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+            bottom: -100px;
+            right: -100px;
+            z-index: 0;
+        }
+
+        .doctor-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 1;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ===== CONTENEDOR DE LA FOTO DE LA DOCTORA con borde degradado ===== */
+        /* IMPORTANTE: Aquí debes poner la ruta de tu foto */
+        .doctor-image-container {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 30px;
+            padding: 5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .doctor-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+        }
+
+        .doctor-name {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* ===== SECCIÓN DE SERVICIOS/TRATAMIENTOS con cards modernas ===== */
+        .services-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, white 0%, #f7fafc 100%);
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 70px;
+            font-weight: 700;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 0;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Degradado superior en las cards */
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        /* ===== IMÁGENES DE LOS SERVICIOS con overlay ===== */
+        .service-image-container {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.1);
+        }
+
+        /* Overlay con gradiente en la imagen */
+        .service-image-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-title {
+            font-size: 1.8em;
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .service-description {
+            color: #718096;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        /* ===== SECCIÓN DE CONTACTO con diseño moderno ===== */
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Formas decorativas animadas */
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            top: -200px;
+            right: -200px;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .contact-grid {
+            max-width: 900px;
+            margin: 50px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .contact-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+        }
+
+        .contact-label {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .contact-info {
+            font-size: 1.4em;
+            font-weight: 700;
+        }
+
+        /* ===== SECCIÓN DE UBICACIÓN con diseño elegante ===== */
+        .location-section {
+            padding: 80px 20px;
+            background: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .location-info {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+        }
+
+        .location-title {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .address {
+            font-size: 1.3em;
+            color: #4a5568;
+            line-height: 2;
+        }
+
+        /* ===== FOOTER moderno ===== */
+        footer {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* ===== RESPONSIVE DESIGN - Adaptación para móviles ===== */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.2em;
+            }
+            
+            .section-title {
+                font-size: 2.2em;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .doctor-name {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ENCABEZADO CON ANIMACIONES -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">🦷 Facultad de Odontología UAdeC</div>
+            <div class="subtitle">Cuidado Dental Profesional y de Calidad</div>
+        </div>
+    </header>
+
+    <!-- SECCIÓN DE LA DOCTORA -->
+    <section class="doctor-section">
+        <div class="doctor-card">
+            <!-- ⚠️ IMPORTANTE: CAMBIA "ruta-de-tu-foto.jpg" POR LA RUTA DE TU IMAGEN -->
+            <!-- Ejemplo: src="img/doctora.jpg" o src="https://tu-servidor.com/foto.jpg" -->
+            <div class="doctor-image-container">
+                <img src="FotoMonse.jpeg" alt="Dra. Montserrath Gydalthy" class="doctor-image">
+            </div>
+            
+            <h2 class="doctor-name">E.O Montserrath Gydalthy</h2>
+            <p style="font-size: 1.2em; color: #718096; font-weight: 500;">Estudiante de Odontología<br>Universidad Autónoma de Coahuila</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE TRATAMIENTOS CON DISEÑO MODERNO -->
+    <section class="services-section">
+        <h2 class="section-title">Nuestros Tratamientos</h2>
+        <div class="services-grid">
+            
+            <!-- SERVICIO 1: DIAGNÓSTICO -->
+            <div class="service-card">
+                <div class="service-image-container">
+                    <img src="Foto3.avif" 
+                         alt="Diagnóstico Dental" 
+                         class="service-image">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Diagnóstico</h3>
+                    <p class="service-description">Evaluación completa de tu salud dental. Identificamos problemas y diseñamos el mejor plan de tratamiento personalizado para ti.</p>
+                </div>
+            </div>
+
+            <!-- SERVICIO 2: LIMPIEZA DENTAL -->
+            <div class="service-card">
+                <div class="service-image-container">
+                    <img src="Foto2.avif" 
+                         alt="Limpieza Dental" 
+                         class="service-image">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Limpieza Dental</h3>
+                    <p class="service-description">Limpieza profunda profesional que elimina placa, sarro y manchas. Mantén tus dientes sanos, brillantes y tu sonrisa radiante.</p>
+                </div>
+            </div>
+
+            <!-- SERVICIO 3: RESINAS DENTALES -->
+            <div class="service-card">
+                <div class="service-image-container">
+                    <img src="Foto1.jpeg" 
+                         alt="Resinas Dentales" 
+                         class="service-image">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Resinas Dentales</h3>
+                    <p class="service-description">Restauraciones estéticas con resina de alta calidad. Recupera la forma y función de tus dientes con resultados naturales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE CONTACTO -->
+    <section class="contact-section">
+        <h2 class="section-title" style="color: white; -webkit-text-fill-color: white;">Agenda Tu Cita</h2>
+        <div class="contact-grid">
+            
+            <!-- TELÉFONO -->
+            <div class="contact-card">
+                <div class="contact-icon">📱</div>
+                <div class="contact-label">Teléfono</div>
+                <div class="contact-info">844 561 0472</div>
+            </div>
+
+            <!-- INSTAGRAM -->
+            <div class="contact-card">
+                <div class="contact-icon">📸</div>
+                <div class="contact-label">Instagram</div>
+                <div class="contact-info">@gydalthy</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section class="location-section">
+        <div class="location-info">
+            <div class="location-title">📍 Ubicación</div>
+            <div class="address">
+                <strong>Dra. Cuquita Cepeda de Dávila</strong><br>
+                Adolfo López Mateos, 25125<br>
+                Saltillo, Coahuila
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p style="font-size: 1.1em;">&copy; 2024 Facultad de Odontología UAdeC | E.O Montserrath Gydalthy</p>
+        <p style="margin-top: 15px; opacity: 0.8; font-size: 1.05em;">Cuidando tu sonrisa con profesionalismo y dedicación ✨</p>
+    </footer>
+</body>
+</html>
